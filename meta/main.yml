@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Anton Chernik
+  description: Install and configure php fpm, php cli and configure php fpm pool
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.0
+  platforms:
+  - name: Debian
+    versions:
+    - jessie
+  galaxy_tags:
+    - development
+    - web
+    - php
+dependencies: []
