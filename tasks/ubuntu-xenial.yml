@@ -19,7 +19,6 @@
     group: root
     mode: 0644
     backup: yes
-    when: ansible_distribution_release == "xenial"
 
 - template:
     src: ../templates/php/fpm/php.ini.j2
@@ -28,7 +27,6 @@
     group: root
     mode: 0644
     backup: yes
-    when: ansible_distribution_release == "xenial"
 
 - template:
     src: ../templates/php/fpm/pool.d/php.conf.j2
@@ -37,7 +35,6 @@
     group: root
     mode: 0644
     backup: yes
-    when: ansible_distribution_release == "xenial"
 
 - file:
     path: /etc/php/7.0/fpm/pool.d/www.conf

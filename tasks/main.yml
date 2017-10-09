@@ -2,7 +2,7 @@
   when: ansible_distribution == "Debian"
   static: no
 
-- include_tasks: ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
+- include_tasks: ubuntu-xenial.yml
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_release == "xenial")
   static: no
 
