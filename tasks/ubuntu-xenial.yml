@@ -39,7 +39,6 @@
 - file:
     path: /etc/php/7.0/fpm/pool.d/www.conf
     state: absent
-    when: ansible_distribution_release == "xenial"
 
 - name: PHP-FPM ROLE | Starting PHP-FPM
   service:
