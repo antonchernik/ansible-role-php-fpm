@@ -3,11 +3,15 @@ Php fpm
 
 Ansible role for installing and configure php fpm, php cli and configure php fpm pool. Tested platforms are:
 * Debian 8
+* Debian 9
+* Ubuntu 16
 
 Requirements
 ------------
 
 Debian 8 (jessie)
+Debian 9 (stretch)
+Ubuntu 16 (xenial)
 
 Role Variables
 --------------

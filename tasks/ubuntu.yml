@@ -1,0 +1,13 @@
+- name: PHP-FPM ROLE | Install list of php packages
+  apt: name={{item}}
+  with_items:
+    - php-cli
+    - php-pear
+    - php-curl
+    - php-gd
+    - php-mcrypt
+    - php-intl
+    - php-fpm
+    - php-memcached
+    - imagemagick
+    - php-imagick
