@@ -1,47 +1,48 @@
-----
-- name: PHP-FPM ROLE | Install list of php packages
+---
+- name: test
   apt: name={{item}}
   with_items:
-    - php-cli
-    - php-pear
-    - php-curl
-    - php-gd
-    - php-mcrypt
-    - php-intl
-    - php-fpm
-    - php-memcached
-    - imagemagick
-    - php-imagick
+   - php-cli
+   - php-pear
+   - php-curl
+   - php-gd
+   - php-mcrypt
+   - php-intl
+   - php-fpm
+   - php-memcached
+   - imagemagick
+   - php-imagick
 
 - template:
-    src: ../templates/php7.0/cli/php.ini.j2
-    dest: /etc/php/7.0/cli/php.ini
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
+   src: ../templates/php7.0/cli/php.ini.j2
+   dest: /etc/php/7.0/cli/php.ini
+   owner: root
+   group: root
+   mode: 0644
+   backup: yes
 
 - template:
-    src: ../templates/php7.0/fpm/php.ini.j2
-    dest: /etc/php/7.0/fpm/php.ini
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
+   src: ../templates/php7.0/fpm/php.ini.j2
+   dest: /etc/php/7.0/fpm/php.ini
+   owner: root
+   group: root
+   mode: 0644
+   backup: yes
 
 - template:
-    src: ../templates/php7.0/fpm/pool.d/php.conf.j2
-    dest: /etc/php/7.0/fpm/pool.d/php.conf
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
+   src: ../templates/php7.0/fpm/pool.d/php.conf.j2
+   dest: /etc/php/7.0/fpm/pool.d/php.conf
+   owner: root
+   group: root
+   mode: 0644
+   backup: yes
 
 - file:
-    path: /etc/php/7.0/fpm/pool.d/www.conf
-    state: absent
+   path: /etc/php/7.0/fpm/pool.d/www.conf
+   state: absent
 
 - name: PHP-FPM ROLE | Starting PHP-FPM
   service:
-    name: php7.0-fpm
-    state: restarted
+   name: php7.0-fpm
+   state: restarted
+
