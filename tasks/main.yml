@@ -1,3 +1,10 @@
+- user:
+    name: "{{ default_php_user }}"
+    shell: /usr/sbin/nologin
+    comment: "User created with ansible"
+    append: yes
+  become: true
+
 - include_tasks: debian.yml
   when: ansible_distribution == "Debian"
   static: no

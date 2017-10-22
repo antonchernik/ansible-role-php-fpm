@@ -1,3 +1,4 @@
+----
 - name: PHP-FPM ROLE | Install list of php packages
   apt: name={{item}}
   with_items:
@@ -13,7 +14,7 @@
     - php-imagick
 
 - template:
-    src: ../templates/php/cli/php.ini.j2
+    src: ../templates/php7.0/cli/php.ini.j2
     dest: /etc/php/7.0/cli/php.ini
     owner: root
     group: root
@@ -21,7 +22,7 @@
     backup: yes
 
 - template:
-    src: ../templates/php/fpm/php.ini.j2
+    src: ../templates/php7.0/fpm/php.ini.j2
     dest: /etc/php/7.0/fpm/php.ini
     owner: root
     group: root
@@ -29,7 +30,7 @@
     backup: yes
 
 - template:
-    src: ../templates/php/fpm/pool.d/php.conf.j2
+    src: ../templates/php7.0/fpm/pool.d/php.conf.j2
     dest: /etc/php/7.0/fpm/pool.d/php.conf
     owner: root
     group: root
