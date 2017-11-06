@@ -23,6 +23,7 @@
    - php5.6-memcached
    - imagemagick
    - php5.6-imagick
+   - php5.6-xml
   when: default_php_version == 5.6
 
 - template:
@@ -78,6 +79,7 @@
    - php-memcached
    - imagemagick
    - php-imagick
+   - php-xml
   when: default_php_version == 7.0
 
 
