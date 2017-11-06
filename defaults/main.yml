@@ -4,3 +4,4 @@ default_upload_max_filesize: 4
 default_php_user: host-manager
 default_php_group: host-manager
 default_php_memory_limit: 128
+default_php_version: 5.6

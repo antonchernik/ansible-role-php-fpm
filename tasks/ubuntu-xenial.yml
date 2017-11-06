@@ -1,5 +1,71 @@
 ---
-- name: test
+
+- apt_repository:
+   repo: 'ppa:ondrej/php'
+  when: default_php_version == 5.6
+
+- name: Updating apt cache
+  apt:
+    update_cache: yes
+  become: true
+  when: default_php_version == 5.6
+
+- name: Install php packages for php 5.6
+  apt: name={{item}}
+  with_items:
+   - php5.6-cli
+   - php-pear
+   - php5.6-curl
+   - php5.6-gd
+   - php5.6-mcrypt
+   - php5.6-intl
+   - php5.6-fpm
+   - php5.6-memcached
+   - imagemagick
+   - php5.6-imagick
+  when: default_php_version == 5.6
+
+- template:
+   src: ../templates/php5.6/cli/php.ini.j2
+   dest: /etc/php/5.6/cli/php.ini
+   owner: root
+   group: root
+   mode: 0644
+   backup: yes
+  when: default_php_version == 5.6
+
+- template:
+   src: ../templates/php5.6/fpm/php.ini.j2
+   dest: /etc/php/5.6/fpm/php.ini
+   owner: root
+   group: root
+   mode: 0644
+   backup: yes
+  when: default_php_version == 5.6
+
+- template:
+   src: ../templates/php5.6/fpm/pool.d/php.conf.j2
+   dest: /etc/php/5.6/fpm/pool.d/php.conf
+   owner: root
+   group: root
+   mode: 0644
+   backup: yes
+  when: default_php_version == 5.6
+
+- file:
+   path: /etc/php/7.0/fpm/pool.d/www.conf
+   state: absent
+  when: default_php_version == 5.6
+
+- name: PHP-FPM ROLE | Starting PHP-FPM
+  service:
+   name: php5.6-fpm
+   state: restarted
+  when: default_php_version == 5.6
+
+
+
+- name: Install php packages for php 7.0
   apt: name={{item}}
   with_items:
    - php-cli
@@ -12,6 +78,9 @@
    - php-memcached
    - imagemagick
    - php-imagick
+  when: default_php_version == 7.0
+
+
 
 - template:
    src: ../templates/php7.0/cli/php.ini.j2
@@ -20,6 +89,7 @@
    group: root
    mode: 0644
    backup: yes
+  when: default_php_version == 7.0
 
 - template:
    src: ../templates/php7.0/fpm/php.ini.j2
@@ -28,6 +98,7 @@
    group: root
    mode: 0644
    backup: yes
+  when: default_php_version == 7.0
 
 - template:
    src: ../templates/php7.0/fpm/pool.d/php.conf.j2
@@ -36,13 +107,18 @@
    group: root
    mode: 0644
    backup: yes
+  when: default_php_version == 7.0
 
 - file:
    path: /etc/php/7.0/fpm/pool.d/www.conf
    state: absent
+  when: default_php_version == 7.0
+
+
+
 
 - name: PHP-FPM ROLE | Starting PHP-FPM
   service:
    name: php7.0-fpm
    state: restarted
-
+  when: default_php_version == 7.0

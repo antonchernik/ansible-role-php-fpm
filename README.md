@@ -2,14 +2,12 @@ Php fpm
 =========
 
 Ansible role for installing and configure php fpm, php cli and configure php fpm pool. Tested platforms are:
-* Debian 8
 * Debian 9
 * Ubuntu 16
 
 Requirements
 ------------
 
-Debian 8 (jessie)
 Debian 9 (stretch)
 Ubuntu 16 (xenial)
 
@@ -25,6 +23,8 @@ Available variables are listed below, along with default values (see defaults/ma
 | default_php_user | yes | user | | Sets php process user |
 | default_php_group | yes | user | | Set php process user group |
 | default_php_memory_limit | yes | 128 | | Set max memory usage per script |
+| default_php_version | yes | 5.6 | | Set php version for setup |
+
 
 Dependencies
 ------------
