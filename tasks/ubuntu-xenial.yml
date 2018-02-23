@@ -2,19 +2,16 @@
 
 - apt_repository:
    repo: 'ppa:ondrej/php'
-  when: default_php_version == 5.6
 
 - name: Updating apt cache
   apt:
     update_cache: yes
   become: true
-  when: default_php_version == 5.6
 
 - name: Install php packages for php 5.6
   apt: name={{item}}
   with_items:
    - php5.6-cli
-   - php-pear
    - php5.6-curl
    - php5.6-gd
    - php5.6-mcrypt
@@ -24,6 +21,7 @@
    - imagemagick
    - php5.6-imagick
    - php5.6-xml
+   - php5.6-mbstring
   when: default_php_version == 5.6
 
 - template:
@@ -54,7 +52,7 @@
   when: default_php_version == 5.6
 
 - file:
-   path: /etc/php/7.0/fpm/pool.d/www.conf
+   path: /etc/php/5.6/fpm/pool.d/www.conf
    state: absent
   when: default_php_version == 5.6
 
@@ -69,17 +67,17 @@
 - name: Install php packages for php 7.0
   apt: name={{item}}
   with_items:
-   - php-cli
-   - php-pear
-   - php-curl
-   - php-gd
-   - php-mcrypt
-   - php-intl
-   - php-fpm
-   - php-memcached
+   - php7.0-cli
+   - php7.0-curl
+   - php7.0-gd
+   - php7.0-mcrypt
+   - php7.0-intl
+   - php7.0-fpm
+   - php7.0-memcached
    - imagemagick
-   - php-imagick
-   - php-xml
+   - php7.0-imagick
+   - php7.0-xml
+   - php7.0-mbstring
   when: default_php_version == 7.0
 
 
